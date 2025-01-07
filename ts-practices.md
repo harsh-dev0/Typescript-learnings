@@ -1,12 +1,22 @@
-Never use any.
-In case there's no alternative, use unknown (more about unknown).
-Use ReadOnly arrays to ensure there's no scope for mutation (unless mutation is needed).
+- Never use `any`.
+- In case there's no alternative, use `unknown` ([more about `unknown`](https://github.com/Microsoft/TypeScript/pull/24439)).
+- Use ReadOnly arrays to ensure there's no scope for mutation (unless mutation is needed).
+
+```
 const numbers: ReadonlyArray<number> = [1, 2, 3];
-Array generics over typecasting.
+```
+
+- Array generics over typecasting.
+
+```
 const numbers: Array<number>;
 //instead of const numbers: any[];
-Use interfaces over types for better extensibility.
-TS util types:
+```
+
+- Use interfaces over types for better extensibility.
+- TS util types:
+
+```
 interface Person {
   name: string;
   age: number;
@@ -26,10 +36,21 @@ enum fruits {
 }
 
 type vitaminCFruits = Exclude<fruits, "apple">;
-Nullish coalescing operator over ternary operator at times.
+```
+
+- Nullish coalescing operator over ternary operator at times.
+
+```
 const url = props.baseurl?props.baseurl:"";
 //instead:
 const url = props.baseurl ?? "";
-Always try to have function return type set:
+```
+
+- Always try to have function return type set:
+
+```
 async function sum(a: number, b: number): Promise<number> {...}
-Remember, Promise.all is all-or-nothing. If any promise fails, the whole thing fails. If you want all Promises to be proccessed (both resolved and failed), use Promise.allSettled().
+```
+
+- Remember, `Promise.all` is all-or-nothing. If any promise fails, the whole thing fails.
+  If you want all Promises to be proccessed (both resolved and failed), use `Promise.allSettled()`.
